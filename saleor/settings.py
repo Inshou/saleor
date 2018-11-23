@@ -51,12 +51,13 @@ CACHES = {'default': django_cache_url.config()}
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://saleor:saleor@localhost:5432/saleor',
+        default='postgres://haikuclick:utf78HaikuEcr!@db.haiku.click:5432/haikuclick',
+        # default='postgres://haikuclick:utf78HaikuClick!@db.haiku.click:5432/haikuclick',
         conn_max_age=600)}
 
 
-TIME_ZONE = 'America/Chicago'
-LANGUAGE_CODE = 'en'
+TIME_ZONE = 'Europe/Moscow'
+LANGUAGE_CODE = 'ru'
 LANGUAGES = [
     ('ar', _('Arabic')),
     ('bg', _('Bulgarian')),
@@ -155,6 +156,11 @@ loaders = [
 
 if not DEBUG:
     loaders = [('django.template.loaders.cached.Loader', loaders)]
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    X_FRAME_OPTIONS = 'DENY'
 
 TEMPLATES = [{
     'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -177,6 +183,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django_babel.middleware.LocaleMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'saleor.core.middleware.discounts',
     'saleor.core.middleware.google_analytics',
     'saleor.core.middleware.country',
@@ -374,7 +381,7 @@ bootstrap4 = {
 TEST_RUNNER = 'tests.runner.PytestTestRunner'
 
 ALLOWED_HOSTS = get_list(
-    os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1'))
+    os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,.haiku.click,3.121.181.225,ec2-3-121-181-225.eu-central-1.compute.amazonaws.com'))
 ALLOWED_GRAPHQL_ORIGINS = os.environ.get('ALLOWED_GRAPHQL_ORIGINS', '*')
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

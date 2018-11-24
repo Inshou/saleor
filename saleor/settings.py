@@ -12,18 +12,18 @@ from . import __version__
 
 
 def get_list(text):
-    return [item.strip() for item in text.split(',')]
+  return [item.strip() for item in text.split(',')]
 
 
 def get_bool_from_env(name, default_value):
-    if name in os.environ:
-        value = os.environ[name]
-        try:
-            return ast.literal_eval(value)
-        except ValueError as e:
-            raise ValueError(
-                '{} is an invalid value for {}'.format(value, name)) from e
-    return default_value
+  if name in os.environ:
+    value = os.environ[name]
+    try:
+      return ast.literal_eval(value)
+    except ValueError as e:
+      raise ValueError(
+        '{} is an invalid value for {}'.format(value, name)) from e
+  return default_value
 
 
 DEBUG = get_bool_from_env('DEBUG', True)
@@ -37,7 +37,7 @@ ROOT_URLCONF = 'saleor.urls'
 WSGI_APPLICATION = 'saleor.wsgi.application'
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+  ('Inshou', 'inshou@gmail.com'),
 )
 MANAGERS = ADMINS
 
@@ -46,47 +46,46 @@ INTERNAL_IPS = get_list(os.environ.get('INTERNAL_IPS', '127.0.0.1'))
 # Some cloud providers (Heroku) export REDIS_URL variable instead of CACHE_URL
 REDIS_URL = os.environ.get('REDIS_URL')
 if REDIS_URL:
-    CACHE_URL = os.environ.setdefault('CACHE_URL', REDIS_URL)
+  CACHE_URL = os.environ.setdefault('CACHE_URL', REDIS_URL)
 CACHES = {'default': django_cache_url.config()}
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://haikuclick:utf78HaikuEcr!@db.haiku.click:5432/haikuclick',
-        # default='postgres://haikuclick:utf78HaikuClick!@db.haiku.click:5432/haikuclick',
-        conn_max_age=600)}
+  'default': dj_database_url.config(
+    default='postgres://haikuclick:utf78HaikuClick!@localhost:5432/haikuclick',
+    conn_max_age=600)}
 
 
 TIME_ZONE = 'Europe/Moscow'
 LANGUAGE_CODE = 'ru'
 LANGUAGES = [
-    ('ar', _('Arabic')),
-    ('bg', _('Bulgarian')),
-    ('bn', _('Bengali')),
-    ('cs', _('Czech')),
-    ('da', _('Danish')),
-    ('de', _('German')),
-    ('en', _('English')),
-    ('es', _('Spanish')),
-    ('fa', _('Persian')),
-    ('fr', _('French')),
-    ('hu', _('Hungarian')),
-    ('it', _('Italian')),
-    ('ja', _('Japanese')),
-    ('ko', _('Korean')),
-    ('mn', _('Mongolian')),
-    ('nb', _('Norwegian')),
-    ('nl', _('Dutch')),
-    ('pl', _('Polish')),
-    ('pt-br', _('Brazilian Portuguese')),
-    ('ro', _('Romanian')),
-    ('ru', _('Russian')),
-    ('sk', _('Slovak')),
-    ('sv', _('Swedish')),
-    ('tr', _('Turkish')),
-    ('uk', _('Ukrainian')),
-    ('vi', _('Vietnamese')),
-    ('zh-hans', _('Simplified Chinese')),
-    ('zh-hant', _('Traditional Chinese'))]
+  ('ar', _('Arabic')),
+  ('bg', _('Bulgarian')),
+  ('bn', _('Bengali')),
+  ('cs', _('Czech')),
+  ('da', _('Danish')),
+  ('de', _('German')),
+  ('en', _('English')),
+  ('es', _('Spanish')),
+  ('fa', _('Persian')),
+  ('fr', _('French')),
+  ('hu', _('Hungarian')),
+  ('it', _('Italian')),
+  ('ja', _('Japanese')),
+  ('ko', _('Korean')),
+  ('mn', _('Mongolian')),
+  ('nb', _('Norwegian')),
+  ('nl', _('Dutch')),
+  ('pl', _('Polish')),
+  ('pt-br', _('Brazilian Portuguese')),
+  ('ro', _('Romanian')),
+  ('ru', _('Russian')),
+  ('sk', _('Slovak')),
+  ('sv', _('Swedish')),
+  ('tr', _('Turkish')),
+  ('uk', _('Ukrainian')),
+  ('vi', _('Vietnamese')),
+  ('zh-hans', _('Simplified Chinese')),
+  ('zh-hant', _('Traditional Chinese'))]
 LOCALE_PATHS = [os.path.join(PROJECT_ROOT, 'locale')]
 USE_I18N = True
 USE_L10N = True
@@ -98,8 +97,8 @@ EMAIL_URL = os.environ.get('EMAIL_URL')
 SENDGRID_USERNAME = os.environ.get('SENDGRID_USERNAME')
 SENDGRID_PASSWORD = os.environ.get('SENDGRID_PASSWORD')
 if not EMAIL_URL and SENDGRID_USERNAME and SENDGRID_PASSWORD:
-    EMAIL_URL = 'smtp://%s:%s@smtp.sendgrid.net:587/?tls=True' % (
-        SENDGRID_USERNAME, SENDGRID_PASSWORD)
+  EMAIL_URL = 'smtp://%s:%s@smtp.sendgrid.net:587/?tls=True' % (
+    SENDGRID_USERNAME, SENDGRID_PASSWORD)
 email_config = dj_email_url.parse(EMAIL_URL or 'console://')
 
 EMAIL_FILE_PATH = email_config['EMAIL_FILE_PATH']
@@ -114,7 +113,7 @@ EMAIL_USE_SSL = email_config['EMAIL_USE_SSL']
 ENABLE_SSL = get_bool_from_env('ENABLE_SSL', False)
 
 if ENABLE_SSL:
-    SECURE_SSL_REDIRECT = not DEBUG
+  SECURE_SSL_REDIRECT = not DEBUG
 
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', EMAIL_HOST_USER)
 ORDER_FROM_EMAIL = os.getenv('ORDER_FROM_EMAIL', DEFAULT_FROM_EMAIL)
@@ -125,196 +124,197 @@ MEDIA_URL = os.environ.get('MEDIA_URL', '/media/')
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 STATIC_URL = os.environ.get('STATIC_URL', '/static/')
 STATICFILES_DIRS = [
-    ('assets', os.path.join(PROJECT_ROOT, 'saleor', 'static', 'assets')),
-    ('favicons', os.path.join(PROJECT_ROOT, 'saleor', 'static', 'favicons')),
-    ('images', os.path.join(PROJECT_ROOT, 'saleor', 'static', 'images')),
-    ('dashboard/images', os.path.join(
-        PROJECT_ROOT, 'saleor', 'static', 'dashboard', 'images'))]
+  ('assets', os.path.join(PROJECT_ROOT, 'saleor', 'static', 'assets')),
+  ('favicons', os.path.join(PROJECT_ROOT, 'saleor', 'static', 'favicons')),
+  ('images', os.path.join(PROJECT_ROOT, 'saleor', 'static', 'images')),
+  ('dashboard/images', os.path.join(
+    PROJECT_ROOT, 'saleor', 'static', 'dashboard', 'images'))]
 STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder']
+  'django.contrib.staticfiles.finders.FileSystemFinder',
+  'django.contrib.staticfiles.finders.AppDirectoriesFinder']
 
 context_processors = [
-    'django.contrib.auth.context_processors.auth',
-    'django.template.context_processors.debug',
-    'django.template.context_processors.i18n',
-    'django.template.context_processors.media',
-    'django.template.context_processors.static',
-    'django.template.context_processors.tz',
-    'django.contrib.messages.context_processors.messages',
-    'django.template.context_processors.request',
-    'saleor.core.context_processors.default_currency',
-    'saleor.checkout.context_processors.cart_counter',
-    'saleor.core.context_processors.search_enabled',
-    'saleor.site.context_processors.site',
-    'social_django.context_processors.backends',
-    'social_django.context_processors.login_redirect']
+  'django.contrib.auth.context_processors.auth',
+  'django.template.context_processors.debug',
+  'django.template.context_processors.i18n',
+  'django.template.context_processors.media',
+  'django.template.context_processors.static',
+  'django.template.context_processors.tz',
+  'django.contrib.messages.context_processors.messages',
+  'django.template.context_processors.request',
+  'saleor.core.context_processors.default_currency',
+  'saleor.checkout.context_processors.cart_counter',
+  'saleor.core.context_processors.search_enabled',
+  'saleor.site.context_processors.site',
+  'social_django.context_processors.backends',
+  'social_django.context_processors.login_redirect']
 
 loaders = [
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader']
+  'django.template.loaders.filesystem.Loader',
+  'django.template.loaders.app_directories.Loader']
 
 if not DEBUG:
-    loaders = [('django.template.loaders.cached.Loader', loaders)]
-    SECURE_CONTENT_TYPE_NOSNIFF = True
-    SECURE_BROWSER_XSS_FILTER = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    X_FRAME_OPTIONS = 'DENY'
+  loaders = [('django.template.loaders.cached.Loader', loaders)]
+  SECURE_CONTENT_TYPE_NOSNIFF = True
+  SECURE_BROWSER_XSS_FILTER = True
+  SESSION_COOKIE_SECURE = True
+  CSRF_COOKIE_SECURE = True
+  X_FRAME_OPTIONS = 'DENY'
 
 TEMPLATES = [{
-    'BACKEND': 'django.template.backends.django.DjangoTemplates',
-    'DIRS': [os.path.join(PROJECT_ROOT, 'templates')],
-    'OPTIONS': {
-        'debug': DEBUG,
-        'context_processors': context_processors,
-        'loaders': loaders,
-        'string_if_invalid': '<< MISSING VARIABLE "%s" >>' if DEBUG else ''}}]
+  'BACKEND': 'django.template.backends.django.DjangoTemplates',
+  'DIRS': [os.path.join(PROJECT_ROOT, 'templates')],
+  'OPTIONS': {
+    'debug': DEBUG,
+    'context_processors': context_processors,
+    'loaders': loaders,
+    'string_if_invalid': '<< MISSING VARIABLE "%s" >>' if DEBUG else ''}}]
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = os.environ.get('SECRET_KEY')
+with open(os.path.normpath(os.path.join(os.path.dirname(__file__), '../.secure/sk.key'))) as f:
+  SECRET_KEY = f.read().strip()
 
 MIDDLEWARE = [
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
-    'django_babel.middleware.LocaleMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'saleor.core.middleware.discounts',
-    'saleor.core.middleware.google_analytics',
-    'saleor.core.middleware.country',
-    'saleor.core.middleware.currency',
-    'saleor.core.middleware.site',
-    'saleor.core.middleware.taxes',
-    'social_django.middleware.SocialAuthExceptionMiddleware',
-    'impersonate.middleware.ImpersonateMiddleware',
-    'saleor.graphql.middleware.jwt_middleware'
+  'django.contrib.sessions.middleware.SessionMiddleware',
+  'django.middleware.security.SecurityMiddleware',
+  'django.middleware.common.CommonMiddleware',
+  'django.middleware.csrf.CsrfViewMiddleware',
+  'django.contrib.auth.middleware.AuthenticationMiddleware',
+  'django.contrib.messages.middleware.MessageMiddleware',
+  'django.middleware.locale.LocaleMiddleware',
+  'django_babel.middleware.LocaleMiddleware',
+  'django.middleware.clickjacking.XFrameOptionsMiddleware',
+  'saleor.core.middleware.discounts',
+  'saleor.core.middleware.google_analytics',
+  'saleor.core.middleware.country',
+  'saleor.core.middleware.currency',
+  'saleor.core.middleware.site',
+  'saleor.core.middleware.taxes',
+  'social_django.middleware.SocialAuthExceptionMiddleware',
+  'impersonate.middleware.ImpersonateMiddleware',
+  'saleor.graphql.middleware.jwt_middleware'
 ]
 
 INSTALLED_APPS = [
-    # External apps that need to go before django's
-    'storages',
+  # External apps that need to go before django's
+  'storages',
 
-    # Django modules
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.sitemaps',
-    'django.contrib.sites',
-    'django.contrib.staticfiles',
-    'django.contrib.auth',
-    'django.contrib.postgres',
-    'django.forms',
+  # Django modules
+  'django.contrib.contenttypes',
+  'django.contrib.sessions',
+  'django.contrib.messages',
+  'django.contrib.sitemaps',
+  'django.contrib.sites',
+  'django.contrib.staticfiles',
+  'django.contrib.auth',
+  'django.contrib.postgres',
+  'django.forms',
 
-    # Local apps
-    'saleor.account',
-    'saleor.discount',
-    'saleor.product',
-    'saleor.checkout',
-    'saleor.core',
-    'saleor.graphql',
-    'saleor.menu',
-    'saleor.order',
-    'saleor.dashboard',
-    'saleor.seo',
-    'saleor.shipping',
-    'saleor.search',
-    'saleor.site',
-    'saleor.data_feeds',
-    'saleor.page',
-    'saleor.payment',
+  # Local apps
+  'saleor.account',
+  'saleor.discount',
+  'saleor.product',
+  'saleor.checkout',
+  'saleor.core',
+  'saleor.graphql',
+  'saleor.menu',
+  'saleor.order',
+  'saleor.dashboard',
+  'saleor.seo',
+  'saleor.shipping',
+  'saleor.search',
+  'saleor.site',
+  'saleor.data_feeds',
+  'saleor.page',
+  'saleor.payment',
 
-    # External apps
-    'versatileimagefield',
-    'django_babel',
-    'bootstrap4',
-    'django_measurement',
-    'django_prices',
-    'django_prices_openexchangerates',
-    'django_prices_vatlayer',
-    'graphene_django',
-    'mptt',
-    'webpack_loader',
-    'social_django',
-    'django_countries',
-    'django_filters',
-    'django_celery_results',
-    'impersonate',
-    'phonenumber_field',
-    'captcha']
+  # External apps
+  'versatileimagefield',
+  'django_babel',
+  'bootstrap4',
+  'django_measurement',
+  'django_prices',
+  'django_prices_openexchangerates',
+  'django_prices_vatlayer',
+  'graphene_django',
+  'mptt',
+  'webpack_loader',
+  'social_django',
+  'django_countries',
+  'django_filters',
+  'django_celery_results',
+  'impersonate',
+  'phonenumber_field',
+  'captcha']
 
 if DEBUG:
-    MIDDLEWARE.append(
-        'debug_toolbar.middleware.DebugToolbarMiddleware')
-    INSTALLED_APPS.append('debug_toolbar')
-    DEBUG_TOOLBAR_PANELS = [
-        # adds a request history to the debug toolbar
-        'ddt_request_history.panels.request_history.RequestHistoryPanel',
+  MIDDLEWARE.append(
+    'debug_toolbar.middleware.DebugToolbarMiddleware')
+  INSTALLED_APPS.append('debug_toolbar')
+  DEBUG_TOOLBAR_PANELS = [
+    # adds a request history to the debug toolbar
+    'ddt_request_history.panels.request_history.RequestHistoryPanel',
 
-        'debug_toolbar.panels.versions.VersionsPanel',
-        'debug_toolbar.panels.timer.TimerPanel',
-        'debug_toolbar.panels.settings.SettingsPanel',
-        'debug_toolbar.panels.headers.HeadersPanel',
-        'debug_toolbar.panels.request.RequestPanel',
-        'debug_toolbar.panels.sql.SQLPanel',
-        'debug_toolbar.panels.templates.TemplatesPanel',
-        'debug_toolbar.panels.staticfiles.StaticFilesPanel',
-        'debug_toolbar.panels.cache.CachePanel',
-        'debug_toolbar.panels.signals.SignalsPanel',
-        'debug_toolbar.panels.logging.LoggingPanel',
-        'debug_toolbar.panels.redirects.RedirectsPanel',
-        'debug_toolbar.panels.profiling.ProfilingPanel',
-    ]
-    DEBUG_TOOLBAR_CONFIG = {
-        'RESULTS_CACHE_SIZE': 100}
+    'debug_toolbar.panels.versions.VersionsPanel',
+    'debug_toolbar.panels.timer.TimerPanel',
+    'debug_toolbar.panels.settings.SettingsPanel',
+    'debug_toolbar.panels.headers.HeadersPanel',
+    'debug_toolbar.panels.request.RequestPanel',
+    'debug_toolbar.panels.sql.SQLPanel',
+    'debug_toolbar.panels.templates.TemplatesPanel',
+    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+    'debug_toolbar.panels.cache.CachePanel',
+    'debug_toolbar.panels.signals.SignalsPanel',
+    'debug_toolbar.panels.logging.LoggingPanel',
+    'debug_toolbar.panels.redirects.RedirectsPanel',
+    'debug_toolbar.panels.profiling.ProfilingPanel',
+  ]
+  DEBUG_TOOLBAR_CONFIG = {
+    'RESULTS_CACHE_SIZE': 100}
 
 ENABLE_SILK = get_bool_from_env('ENABLE_SILK', False)
 if ENABLE_SILK:
-    MIDDLEWARE.insert(0, 'silk.middleware.SilkyMiddleware')
-    INSTALLED_APPS.append('silk')
+  MIDDLEWARE.insert(0, 'silk.middleware.SilkyMiddleware')
+  INSTALLED_APPS.append('silk')
 
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'root': {
-        'level': 'INFO',
-        'handlers': ['console']},
-    'formatters': {
-        'verbose': {
-            'format': (
-                '%(levelname)s %(name)s %(message)s'
-                ' [PID:%(process)d:%(threadName)s]')},
-        'simple': {
-            'format': '%(levelname)s %(message)s'}},
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'}},
-    'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'},
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose'}},
-    'loggers': {
-        'django': {
-            'handlers': ['console', 'mail_admins'],
-            'level': 'INFO',
-            'propagate': True},
-        'django.server': {
-            'handlers': ['console'],
-            'level': 'INFO',
-            'propagate': True},
-        'saleor': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': True}}}
+  'version': 1,
+  'disable_existing_loggers': False,
+  'root': {
+    'level': 'INFO',
+    'handlers': ['console']},
+  'formatters': {
+    'verbose': {
+      'format': (
+        '%(levelname)s %(name)s %(message)s'
+        ' [PID:%(process)d:%(threadName)s]')},
+    'simple': {
+      'format': '%(levelname)s %(message)s'}},
+  'filters': {
+    'require_debug_false': {
+      '()': 'django.utils.log.RequireDebugFalse'}},
+  'handlers': {
+    'mail_admins': {
+      'level': 'ERROR',
+      'filters': ['require_debug_false'],
+      'class': 'django.utils.log.AdminEmailHandler'},
+    'console': {
+      'level': 'DEBUG',
+      'class': 'logging.StreamHandler',
+      'formatter': 'verbose'}},
+  'loggers': {
+    'django': {
+      'handlers': ['console', 'mail_admins'],
+      'level': 'INFO',
+      'propagate': True},
+    'django.server': {
+      'handlers': ['console'],
+      'level': 'INFO',
+      'propagate': True},
+    'saleor': {
+      'handlers': ['console'],
+      'level': 'DEBUG',
+      'propagate': True}}}
 
 AUTH_USER_MODEL = 'account.User'
 
@@ -326,9 +326,9 @@ DEFAULT_DECIMAL_PLACES = get_currency_fraction(DEFAULT_CURRENCY)
 DEFAULT_MAX_DIGITS = 12
 AVAILABLE_CURRENCIES = [DEFAULT_CURRENCY]
 COUNTRIES_OVERRIDE = {
-    'EU': pgettext_lazy(
-        'Name of political and economical union of european countries',
-        'European Union')}
+  'EU': pgettext_lazy(
+    'Name of political and economical union of european countries',
+    'European Union')}
 
 OPENEXCHANGERATES_API_KEY = os.environ.get('OPENEXCHANGERATES_API_KEY')
 
@@ -346,8 +346,8 @@ GOOGLE_ANALYTICS_TRACKING_ID = os.environ.get('GOOGLE_ANALYTICS_TRACKING_ID')
 
 
 def get_host():
-    from django.contrib.sites.models import Site
-    return Site.objects.get_current().domain
+  from django.contrib.sites.models import Site
+  return Site.objects.get_current().domain
 
 
 PAYMENT_HOST = get_host
@@ -359,10 +359,10 @@ SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 # Do not use cached session if locmem cache backend is used but fallback to use
 # default django.contrib.sessions.backends.db instead
 if not CACHES['default']['BACKEND'].endswith('LocMemCache'):
-    SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+  SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
 MESSAGE_TAGS = {
-    messages.ERROR: 'danger'}
+  messages.ERROR: 'danger'}
 
 LOW_STOCK_THRESHOLD = 10
 MAX_CART_LINE_QUANTITY = int(os.environ.get('MAX_CART_LINE_QUANTITY', 50))
@@ -372,16 +372,16 @@ DASHBOARD_PAGINATE_BY = 30
 DASHBOARD_SEARCH_LIMIT = 5
 
 bootstrap4 = {
-    'set_placeholder': False,
-    'set_required': False,
-    'success_css_class': '',
-    'form_renderers': {
-        'default': 'saleor.core.utils.form_renderer.FormRenderer'}}
+  'set_placeholder': False,
+  'set_required': False,
+  'success_css_class': '',
+  'form_renderers': {
+    'default': 'saleor.core.utils.form_renderer.FormRenderer'}}
 
 TEST_RUNNER = 'tests.runner.PytestTestRunner'
 
 ALLOWED_HOSTS = get_list(
-    os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,.haiku.click,3.121.181.225,ec2-3-121-181-225.eu-central-1.compute.amazonaws.com'))
+  os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,.haiku.click,3.121.181.225,ec2-3-121-181-225.eu-central-1.compute.amazonaws.com'))
 ALLOWED_GRAPHQL_ORIGINS = os.environ.get('ALLOWED_GRAPHQL_ORIGINS', '*')
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -398,49 +398,49 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 if AWS_STORAGE_BUCKET_NAME:
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+  STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 if AWS_MEDIA_BUCKET_NAME:
-    DEFAULT_FILE_STORAGE = 'saleor.core.storages.S3MediaStorage'
-    THUMBNAIL_DEFAULT_STORAGE = DEFAULT_FILE_STORAGE
+  DEFAULT_FILE_STORAGE = 'saleor.core.storages.S3MediaStorage'
+  THUMBNAIL_DEFAULT_STORAGE = DEFAULT_FILE_STORAGE
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
-    'products': [
-        ('product_gallery', 'thumbnail__540x540'),
-        ('product_gallery_2x', 'thumbnail__1080x1080'),
-        ('product_small', 'thumbnail__60x60'),
-        ('product_small_2x', 'thumbnail__120x120'),
-        ('product_list', 'thumbnail__255x255'),
-        ('product_list_2x', 'thumbnail__510x510')],
-    'background_images': [
-        ('header_image', 'thumbnail__1080x440')]}
+  'products': [
+    ('product_gallery', 'thumbnail__540x540'),
+    ('product_gallery_2x', 'thumbnail__1080x1080'),
+    ('product_small', 'thumbnail__60x60'),
+    ('product_small_2x', 'thumbnail__120x120'),
+    ('product_list', 'thumbnail__255x255'),
+    ('product_list_2x', 'thumbnail__510x510')],
+  'background_images': [
+    ('header_image', 'thumbnail__1080x440')]}
 
 VERSATILEIMAGEFIELD_SETTINGS = {
-    # Images should be pre-generated on Production environment
-    'create_images_on_demand': get_bool_from_env(
-        'CREATE_IMAGES_ON_DEMAND', DEBUG),
+  # Images should be pre-generated on Production environment
+  'create_images_on_demand': get_bool_from_env(
+    'CREATE_IMAGES_ON_DEMAND', DEBUG),
 }
 
 PLACEHOLDER_IMAGES = {
-    60: 'images/placeholder60x60.png',
-    120: 'images/placeholder120x120.png',
-    255: 'images/placeholder255x255.png',
-    540: 'images/placeholder540x540.png',
-    1080: 'images/placeholder1080x1080.png'}
+  60: 'images/placeholder60x60.png',
+  120: 'images/placeholder120x120.png',
+  255: 'images/placeholder255x255.png',
+  540: 'images/placeholder540x540.png',
+  1080: 'images/placeholder1080x1080.png'}
 
 DEFAULT_PLACEHOLDER = 'images/placeholder255x255.png'
 
 WEBPACK_LOADER = {
-    'DEFAULT': {
-        'CACHE': not DEBUG,
-        'BUNDLE_DIR_NAME': 'assets/',
-        'STATS_FILE': os.path.join(PROJECT_ROOT, 'webpack-bundle.json'),
-        'POLL_INTERVAL': 0.1,
-        'IGNORE': [
-            r'.+\.hot-update\.js',
-            r'.+\.map']}}
+  'DEFAULT': {
+    'CACHE': not DEBUG,
+    'BUNDLE_DIR_NAME': 'assets/',
+    'STATS_FILE': os.path.join(PROJECT_ROOT, 'webpack-bundle.json'),
+    'POLL_INTERVAL': 0.1,
+    'IGNORE': [
+      r'.+\.hot-update\.js',
+      r'.+\.map']}}
 
 
 LOGOUT_ON_PASSWORD_CHANGE = False
@@ -459,40 +459,40 @@ ENABLE_SEARCH = bool(ES_URL) or DB_SEARCH_ENABLED  # global search disabling
 SEARCH_BACKEND = 'saleor.search.backends.postgresql'
 
 if ES_URL:
-    SEARCH_BACKEND = 'saleor.search.backends.elasticsearch'
-    INSTALLED_APPS.append('django_elasticsearch_dsl')
-    ELASTICSEARCH_DSL = {
-        'default': {
-            'hosts': ES_URL}}
+  SEARCH_BACKEND = 'saleor.search.backends.elasticsearch'
+  INSTALLED_APPS.append('django_elasticsearch_dsl')
+  ELASTICSEARCH_DSL = {
+    'default': {
+      'hosts': ES_URL}}
 
 AUTHENTICATION_BACKENDS = [
-    'saleor.account.backends.facebook.CustomFacebookOAuth2',
-    'saleor.account.backends.google.CustomGoogleOAuth2',
-    'graphql_jwt.backends.JSONWebTokenBackend',
-    'django.contrib.auth.backends.ModelBackend']
+  'saleor.account.backends.facebook.CustomFacebookOAuth2',
+  'saleor.account.backends.google.CustomGoogleOAuth2',
+  'graphql_jwt.backends.JSONWebTokenBackend',
+  'django.contrib.auth.backends.ModelBackend']
 
 SOCIAL_AUTH_PIPELINE = [
-    'social_core.pipeline.social_auth.social_details',
-    'social_core.pipeline.social_auth.social_uid',
-    'social_core.pipeline.social_auth.auth_allowed',
-    'social_core.pipeline.social_auth.social_user',
-    'social_core.pipeline.social_auth.associate_by_email',
-    'social_core.pipeline.user.create_user',
-    'social_core.pipeline.social_auth.associate_user',
-    'social_core.pipeline.social_auth.load_extra_data',
-    'social_core.pipeline.user.user_details']
+  'social_core.pipeline.social_auth.social_details',
+  'social_core.pipeline.social_auth.social_uid',
+  'social_core.pipeline.social_auth.auth_allowed',
+  'social_core.pipeline.social_auth.social_user',
+  'social_core.pipeline.social_auth.associate_by_email',
+  'social_core.pipeline.user.create_user',
+  'social_core.pipeline.social_auth.associate_user',
+  'social_core.pipeline.social_auth.load_extra_data',
+  'social_core.pipeline.user.user_details']
 
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 SOCIAL_AUTH_USER_MODEL = AUTH_USER_MODEL
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-    'fields': 'id, email'}
+  'fields': 'id, email'}
 # As per March 2018, Facebook requires all traffic to go through HTTPS only
 SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
 # CELERY SETTINGS
 CELERY_BROKER_URL = os.environ.get(
-    'CELERY_BROKER_URL', os.environ.get('CLOUDAMQP_URL')) or ''
+  'CELERY_BROKER_URL', os.environ.get('CLOUDAMQP_URL')) or ''
 CELERY_TASK_ALWAYS_EAGER = not CELERY_BROKER_URL
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
@@ -501,39 +501,39 @@ CELERY_RESULT_BACKEND = 'django-db'
 
 # Impersonate module settings
 IMPERSONATE = {
-    'URI_EXCLUSIONS': [r'^dashboard/'],
-    'CUSTOM_USER_QUERYSET': 'saleor.account.impersonate.get_impersonatable_users',  # noqa
-    'USE_HTTP_REFERER': True,
-    'CUSTOM_ALLOW': 'saleor.account.impersonate.can_impersonate'}
+  'URI_EXCLUSIONS': [r'^dashboard/'],
+  'CUSTOM_USER_QUERYSET': 'saleor.account.impersonate.get_impersonatable_users',  # noqa
+  'USE_HTTP_REFERER': True,
+  'CUSTOM_ALLOW': 'saleor.account.impersonate.can_impersonate'}
 
 
 # Rich-text editor
 ALLOWED_TAGS = [
-    'a',
-    'b',
-    'blockquote',
-    'br',
-    'em',
-    'h2',
-    'h3',
-    'i',
-    'img',
-    'li',
-    'ol',
-    'p',
-    'strong',
-    'ul']
+  'a',
+  'b',
+  'blockquote',
+  'br',
+  'em',
+  'h2',
+  'h3',
+  'i',
+  'img',
+  'li',
+  'ol',
+  'p',
+  'strong',
+  'ul']
 ALLOWED_ATTRIBUTES = {
-    '*': ['align', 'style'],
-    'a': ['href', 'title'],
-    'img': ['src']}
+  '*': ['align', 'style'],
+  'a': ['href', 'title'],
+  'img': ['src']}
 ALLOWED_STYLES = ['text-align']
 
 
 # Slugs for menus precreated in Django migrations
 DEFAULT_MENUS = {
-    'top_menu_name': 'navbar',
-    'bottom_menu_name': 'footer'}
+  'top_menu_name': 'navbar',
+  'bottom_menu_name': 'footer'}
 
 # This enable the new 'No Captcha reCaptcha' version (the simple checkbox)
 # instead of the old (deprecated) one. For more information see:
@@ -548,33 +548,33 @@ RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
 #  Sentry
 SENTRY_DSN = os.environ.get('SENTRY_DSN')
 if SENTRY_DSN:
-    INSTALLED_APPS.append('raven.contrib.django.raven_compat')
-    RAVEN_CONFIG = {
-        'dsn': SENTRY_DSN,
-        'release': __version__}
+  INSTALLED_APPS.append('raven.contrib.django.raven_compat')
+  RAVEN_CONFIG = {
+    'dsn': SENTRY_DSN,
+    'release': __version__}
 
 
 SERIALIZATION_MODULES = {
-    'json': 'saleor.core.utils.json_serializer'}
+  'json': 'saleor.core.utils.json_serializer'}
 
 
 DUMMY = 'dummy'
 BRAINTREE = 'braintree'
 CHECKOUT_PAYMENT_GATEWAYS = {
-    DUMMY: pgettext_lazy('Payment method name', 'Dummy gateway')
+  DUMMY: pgettext_lazy('Payment method name', 'Dummy gateway')
 }
 
 PAYMENT_GATEWAYS = {
-    DUMMY: {
-        'module': 'saleor.payment.gateways.dummy',
-        'connection_params': {}},
-    BRAINTREE: {
-        'module': 'saleor.payment.gateways.braintree',
-        'connection_params': {
-            'sandbox_mode': get_bool_from_env('BRAINTREE_SANDBOX_MODE', True),
-            'merchant_id': os.environ.get('BRAINTREE_MERCHANT_ID'),
-            'public_key': os.environ.get('BRAINTREE_PUBLIC_KEY'),
-            'private_key': os.environ.get('BRAINTREE_PRIVATE_KEY')
-        }
+  DUMMY: {
+    'module': 'saleor.payment.gateways.dummy',
+    'connection_params': {}},
+  BRAINTREE: {
+    'module': 'saleor.payment.gateways.braintree',
+    'connection_params': {
+      'sandbox_mode': get_bool_from_env('BRAINTREE_SANDBOX_MODE', True),
+      'merchant_id': os.environ.get('BRAINTREE_MERCHANT_ID'),
+      'public_key': os.environ.get('BRAINTREE_PUBLIC_KEY'),
+      'private_key': os.environ.get('BRAINTREE_PRIVATE_KEY')
     }
+  }
 }

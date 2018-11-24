@@ -35,3 +35,4 @@ webpack-bundle.json
 /templates/templated_email/compiled/*
 !/templates/templated_email/compiled/.gitkeep
 /.secure/*
+/npm-debug*

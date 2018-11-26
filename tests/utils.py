@@ -58,4 +58,4 @@ def create_pdf_file_with_image_ext():
 
 
 def money(amount):
-    return Money(amount, 'USD')
+    return Money(amount, 'RUB')

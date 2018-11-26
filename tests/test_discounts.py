@@ -15,18 +15,18 @@ from saleor.product.models import Product, ProductVariant
 
 def get_min_amount_spent(min_amount_spent):
     if min_amount_spent is not None:
-        return Money(min_amount_spent, 'USD')
+        return Money(min_amount_spent, 'RUB')
     return None
 
 
 @pytest.mark.parametrize('min_amount_spent, value', [
-    (Money(5, 'USD'), Money(10, 'USD')),
-    (Money(10, 'USD'), Money(10, 'USD'))])
+    (Money(5, 'RUB'), Money(10, 'RUB')),
+    (Money(10, 'RUB'), Money(10, 'RUB'))])
 def test_valid_voucher_min_amount_spent(settings, min_amount_spent, value):
     voucher = Voucher(
         code='unique', type=VoucherType.SHIPPING,
         discount_value_type=DiscountValueType.FIXED,
-        discount_value=Money(10, 'USD'), min_amount_spent=min_amount_spent)
+        discount_value=Money(10, 'RUB'), min_amount_spent=min_amount_spent)
     voucher.validate_min_amount_spent(TaxedMoney(net=value, gross=value))
 
 
@@ -47,7 +47,7 @@ def test_variant_discounts(product):
         value=50)
     high_discount.products.add(product)
     final_price = variant.get_price(discounts=Sale.objects.all())
-    assert final_price.gross == Money(0, 'USD')
+    assert final_price.gross == Money(0, 'RUB')
 
 
 @pytest.mark.integration
@@ -59,7 +59,7 @@ def test_percentage_discounts(product):
         value=50)
     discount.products.add(product)
     final_price = variant.get_price(discounts=[discount])
-    assert final_price.gross == Money(5, 'USD')
+    assert final_price.gross == Money(5, 'RUB')
 
 
 def test_voucher_queryset_active(voucher):
@@ -94,7 +94,7 @@ def test_products_voucher_checkout_discount_not(
     monkeypatch.setattr(
         'saleor.checkout.utils.get_prices_of_discounted_products',
         lambda lines, discounted_products: (
-            TaxedMoney(net=Money(price, 'USD'), gross=Money(price, 'USD'))
+            TaxedMoney(net=Money(price, 'RUB'), gross=Money(price, 'RUB'))
             for price in prices))
     voucher = Voucher(
         code='unique', type=VoucherType.PRODUCT,
@@ -104,16 +104,16 @@ def test_products_voucher_checkout_discount_not(
     voucher.save()
     checkout = cart_with_item
     discount = get_voucher_discount_for_cart(voucher, checkout)
-    assert discount == Money(expected_value, 'USD')
+    assert discount == Money(expected_value, 'RUB')
 
 
 def test_sale_applies_to_correct_products(product_type, category):
     product = Product.objects.create(
-        name='Test Product', price=Money(10, 'USD'), description='',
+        name='Test Product', price=Money(10, 'RUB'), description='',
         pk=111, product_type=product_type, category=category)
     variant = ProductVariant.objects.create(product=product, sku='firstvar')
     product2 = Product.objects.create(
-        name='Second product', price=Money(15, 'USD'), description='',
+        name='Second product', price=Money(15, 'RUB'), description='',
         product_type=product_type, category=category)
     sec_variant = ProductVariant.objects.create(
         product=product2, sku='secvar', pk=111)
@@ -123,7 +123,7 @@ def test_sale_applies_to_correct_products(product_type, category):
     assert product2 not in sale.products.all()
     product_discount = get_product_discount_on_sale(sale, variant.product)
     discounted_price = product_discount(product.price)
-    assert discounted_price == Money(7, 'USD')
+    assert discounted_price == Money(7, 'RUB')
     with pytest.raises(NotApplicable):
         get_product_discount_on_sale(sale, sec_variant.product)
 
@@ -164,9 +164,9 @@ def test_get_value_voucher_discount(
         min_amount_spent=get_min_amount_spent(min_amount_spent))
     voucher.save()
     total_price = TaxedMoney(
-        net=Money(total, 'USD'), gross=Money(total, 'USD'))
+        net=Money(total, 'RUB'), gross=Money(total, 'RUB'))
     discount = get_value_voucher_discount(voucher, total_price)
-    assert discount == Money(expected_value, 'USD')
+    assert discount == Money(expected_value, 'RUB')
 
 
 @pytest.mark.parametrize(
@@ -186,11 +186,11 @@ def test_get_shipping_voucher_discount(
         min_amount_spent=get_min_amount_spent(min_amount_spent))
     voucher.save()
     total = TaxedMoney(
-        net=Money(total, 'USD'), gross=Money(total, 'USD'))
+        net=Money(total, 'RUB'), gross=Money(total, 'RUB'))
     shipping_price = TaxedMoney(
-        net=Money(shipping_price, 'USD'), gross=Money(shipping_price, 'USD'))
+        net=Money(shipping_price, 'RUB'), gross=Money(shipping_price, 'RUB'))
     discount = get_shipping_voucher_discount(voucher, total, shipping_price)
-    assert discount == Money(expected_value, 'USD')
+    assert discount == Money(expected_value, 'RUB')
 
 
 @pytest.mark.parametrize(
@@ -202,7 +202,7 @@ def test_get_voucher_discount_all_products(
         prices, discount_value_type, discount_value, voucher_type,
         expected_value):
     prices = [
-        TaxedMoney(net=Money(price, 'USD'), gross=Money(price, 'USD'))
+        TaxedMoney(net=Money(price, 'RUB'), gross=Money(price, 'RUB'))
         for price in prices]
     voucher = Voucher(
         code='unique', type=voucher_type,
@@ -210,7 +210,7 @@ def test_get_voucher_discount_all_products(
         discount_value=discount_value, apply_once_per_order=True)
     voucher.save()
     discount = get_products_voucher_discount(voucher, prices)
-    assert discount == Money(expected_value, 'USD')
+    assert discount == Money(expected_value, 'RUB')
 
 
 @pytest.mark.parametrize('current_date, is_active', (

@@ -11,7 +11,7 @@ const value = {
 storiesOf("Generics / PriceRangeField", module)
   .add("with value", () => (
     <PriceRangeField
-      currencySymbol="USD"
+      currencySymbol="RUB"
       name="priceField"
       onChange={undefined}
       value={value}
@@ -19,7 +19,7 @@ storiesOf("Generics / PriceRangeField", module)
   ))
   .add("with label", () => (
     <PriceRangeField
-      currencySymbol="USD"
+      currencySymbol="RUB"
       label="Lorem ipsum"
       name="priceField"
       onChange={undefined}
@@ -28,7 +28,7 @@ storiesOf("Generics / PriceRangeField", module)
   ))
   .add("with hint", () => (
     <PriceRangeField
-      currencySymbol="USD"
+      currencySymbol="RUB"
       hint="Lorem ipsum"
       name="priceField"
       onChange={undefined}
@@ -37,7 +37,7 @@ storiesOf("Generics / PriceRangeField", module)
   ))
   .add("disabled", () => (
     <PriceRangeField
-      currencySymbol="USD"
+      currencySymbol="RUB"
       disabled
       name="priceField"
       onChange={undefined}
@@ -46,7 +46,7 @@ storiesOf("Generics / PriceRangeField", module)
   ))
   .add("with label and hint", () => (
     <PriceRangeField
-      currencySymbol="USD"
+      currencySymbol="RUB"
       hint="Ipsum"
       label="Lorem"
       name="priceField"
@@ -56,7 +56,7 @@ storiesOf("Generics / PriceRangeField", module)
   ))
   .add("with value, label, currency symbol and hint", () => (
     <PriceRangeField
-      currencySymbol="USD"
+      currencySymbol="RUB"
       hint="Ipsum"
       label="Lorem"
       name="priceField"
@@ -66,7 +66,7 @@ storiesOf("Generics / PriceRangeField", module)
   ))
   .add("with value, label, currency symbol and error", () => (
     <PriceRangeField
-      currencySymbol="USD"
+      currencySymbol="RUB"
       error={true}
       hint="Ipsum"
       label="Lorem"

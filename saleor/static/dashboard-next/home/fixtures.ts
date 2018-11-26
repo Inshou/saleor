@@ -305,7 +305,7 @@ export const shop: (placeholderImage: string) => Home = (
             price: {
               __typename: "Money",
               amount: 37.65,
-              currency: "USD"
+              currency: "RUB"
             },
             thumbnailUrl: placeholderImage
           },
@@ -315,7 +315,7 @@ export const shop: (placeholderImage: string) => Home = (
             gross: {
               __typename: "Money",
               amount: 37.65,
-              currency: "USD"
+              currency: "RUB"
             }
           }
         }
@@ -331,7 +331,7 @@ export const shop: (placeholderImage: string) => Home = (
     gross: {
       __typename: "Money",
       amount: 57.15,
-      currency: "USD"
+      currency: "RUB"
     }
   }
 });

@@ -56,7 +56,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='cart',
             name='discount_amount',
-            field=django_prices.models.MoneyField(currency='USD', decimal_places=2, default=0, max_digits=12),
+            field=django_prices.models.MoneyField(currency='RUB', decimal_places=2, default=0, max_digits=12),
         ),
         migrations.AddField(
             model_name='cart',

@@ -550,12 +550,12 @@ def test_get_discount_for_cart_value_voucher(
         discount_value_type=discount_type,
         discount_value=discount_value,
         min_amount_spent=(
-            Money(min_amount_spent, 'USD')
+            Money(min_amount_spent, 'RUB')
             if min_amount_spent is not None else None))
-    subtotal = TaxedMoney(net=Money(total, 'USD'), gross=Money(total, 'USD'))
+    subtotal = TaxedMoney(net=Money(total, 'RUB'), gross=Money(total, 'RUB'))
     cart = Mock(get_subtotal=Mock(return_value=subtotal))
     discount = get_voucher_discount_for_cart(voucher, cart)
-    assert discount == Money(discount_amount, 'USD')
+    assert discount == Money(discount_amount, 'RUB')
 
 
 def test_get_discount_for_cart_value_voucher_not_applicable():
@@ -564,12 +564,12 @@ def test_get_discount_for_cart_value_voucher_not_applicable():
         type=VoucherType.VALUE,
         discount_value_type=DiscountValueType.FIXED,
         discount_value=10,
-        min_amount_spent=Money(100, 'USD'))
-    subtotal = TaxedMoney(net=Money(10, 'USD'), gross=Money(10, 'USD'))
+        min_amount_spent=Money(100, 'RUB'))
+    subtotal = TaxedMoney(net=Money(10, 'RUB'), gross=Money(10, 'RUB'))
     cart = Mock(get_subtotal=Mock(return_value=subtotal))
     with pytest.raises(NotApplicable) as e:
         get_voucher_discount_for_cart(voucher, cart)
-    assert e.value.min_amount_spent == Money(100, 'USD')
+    assert e.value.min_amount_spent == Money(100, 'RUB')
 
 
 @pytest.mark.parametrize(
@@ -582,9 +582,9 @@ def test_get_discount_for_cart_value_voucher_not_applicable():
 def test_get_discount_for_cart_shipping_voucher(
         shipping_cost, shipping_country_code, discount_value,
         discount_type, countries, expected_value):
-    subtotal = TaxedMoney(net=Money(100, 'USD'), gross=Money(100, 'USD'))
+    subtotal = TaxedMoney(net=Money(100, 'RUB'), gross=Money(100, 'RUB'))
     shipping_total = TaxedMoney(
-        net=Money(shipping_cost, 'USD'), gross=Money(shipping_cost, 'USD'))
+        net=Money(shipping_cost, 'RUB'), gross=Money(shipping_cost, 'RUB'))
     cart = Mock(
         get_subtotal=Mock(return_value=subtotal),
         is_shipping_required=Mock(return_value=True),
@@ -597,23 +597,23 @@ def test_get_discount_for_cart_shipping_voucher(
         discount_value=discount_value,
         countries=countries)
     discount = get_voucher_discount_for_cart(voucher, cart)
-    assert discount == Money(expected_value, 'USD')
+    assert discount == Money(expected_value, 'RUB')
 
 
 @pytest.mark.parametrize(
     'is_shipping_required, shipping_method, discount_value, discount_type,'
     'countries, min_amount_spent, subtotal, error_msg', [
         (True, Mock(shipping_zone=Mock(countries=['PL'])),
-         10, DiscountValueType.FIXED, ['US'], None, Money(10, 'USD'),
+         10, DiscountValueType.FIXED, ['US'], None, Money(10, 'RUB'),
          'This offer is not valid in your country.'),
         (True, None, 10, DiscountValueType.FIXED,
-         [], None, Money(10, 'USD'),
+         [], None, Money(10, 'RUB'),
          'Please select a shipping method first.'),
         (False, None, 10, DiscountValueType.FIXED,
-         [], None, Money(10, 'USD'),
+         [], None, Money(10, 'RUB'),
          'Your order does not require shipping.'),
-        (True, Mock(price=Money(10, 'USD')), 10,
-         DiscountValueType.FIXED, [], 5, Money(2, 'USD'),
+        (True, Mock(price=Money(10, 'RUB')), 10,
+         DiscountValueType.FIXED, [], 5, Money(2, 'RUB'),
          'This offer is only valid for orders over $5.00.')])
 def test_get_discount_for_cart_shipping_voucher_not_applicable(
         is_shipping_required, shipping_method, discount_value,
@@ -628,7 +628,7 @@ def test_get_discount_for_cart_shipping_voucher_not_applicable(
         discount_value_type=discount_type,
         discount_value=discount_value,
         min_amount_spent=(
-            Money(min_amount_spent, 'USD')
+            Money(min_amount_spent, 'RUB')
             if min_amount_spent is not None else None),
         countries=countries)
     with pytest.raises(NotApplicable) as e:
@@ -791,7 +791,7 @@ def test_recalculate_cart_discount(
 
     recalculate_cart_discount(cart_with_voucher, None, None)
     assert cart_with_voucher.translated_discount_name == voucher_translation_fr.name  # noqa
-    assert cart_with_voucher.discount_amount == Money('10.00', 'USD')
+    assert cart_with_voucher.discount_amount == Money('10.00', 'RUB')
 
 
 def test_recalculate_cart_discount_voucher_not_applicable(
@@ -822,7 +822,7 @@ def test_recalculate_cart_discount_expired_voucher(cart_with_voucher, voucher):
 
 def test_get_cart_data_for_checkout(cart_with_voucher, vatlayer):
     line_price = TaxedMoney(
-        net=Money('24.39', 'USD'), gross=Money('30.00', 'USD'))
+        net=Money('24.39', 'RUB'), gross=Money('30.00', 'RUB'))
     expected_data = {
         'cart': cart_with_voucher,
         'cart_are_taxes_handled': True,

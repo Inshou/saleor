@@ -55,7 +55,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='shippingmethod',
             name='maximum_order_price',
-            field=django_prices.models.MoneyField(blank=True, currency='USD', decimal_places=2, max_digits=12, null=True),
+            field=django_prices.models.MoneyField(blank=True, currency='RUB', decimal_places=2, max_digits=12, null=True),
         ),
         migrations.AddField(
             model_name='shippingmethod',
@@ -65,7 +65,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='shippingmethod',
             name='minimum_order_price',
-            field=django_prices.models.MoneyField(blank=True, currency='USD', decimal_places=2, default=0, max_digits=12, null=True),
+            field=django_prices.models.MoneyField(blank=True, currency='RUB', decimal_places=2, default=0, max_digits=12, null=True),
         ),
         migrations.AddField(
             model_name='shippingmethod',
@@ -75,7 +75,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='shippingmethod',
             name='price',
-            field=django_prices.models.MoneyField(currency='USD', decimal_places=2, default=0, max_digits=12),
+            field=django_prices.models.MoneyField(currency='RUB', decimal_places=2, default=0, max_digits=12),
         ),
         migrations.AddField(
             model_name='shippingmethod',

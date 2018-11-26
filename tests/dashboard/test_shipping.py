@@ -197,7 +197,7 @@ def test_shipping_method_add_not_valid(admin_client, shipping_zone):
 def test_shipping_method_edit(admin_client, shipping_zone):
     assert ShippingMethod.objects.count() == 1
     country = shipping_zone.shipping_methods.all()[0]
-    assert country.price == Money(10, 'USD')
+    assert country.price == Money(10, 'RUB')
     url = reverse(
         'dashboard:shipping-method-edit',
         kwargs={
@@ -213,7 +213,7 @@ def test_shipping_method_edit(admin_client, shipping_zone):
     assert ShippingMethod.objects.count() == 1
 
     shipping_price = shipping_zone.shipping_methods.all()[0].price
-    assert shipping_price == Money(50, 'USD')
+    assert shipping_price == Money(50, 'RUB')
 
 
 def test_shipping_method_delete(admin_client, shipping_zone):

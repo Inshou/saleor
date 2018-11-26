@@ -352,8 +352,8 @@ msgstr "min_amount_spent"
 
 #: saleor/dashboard/discount/filters.py:31
 msgctxt "Sale type filter choice"
-msgid "USD"
-msgstr "USD"
+msgid "RUB"
+msgstr "RUB"
 
 #: saleor/dashboard/discount/filters.py:32
 msgctxt "Sale type filter choice"

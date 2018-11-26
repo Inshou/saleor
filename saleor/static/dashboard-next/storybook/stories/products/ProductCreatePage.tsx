@@ -12,7 +12,7 @@ storiesOf("Views / Products / Create product", module)
   .addDecorator(Decorator)
   .add("default", () => (
     <ProductCreatePage
-      currency="USD"
+      currency="RUB"
       disabled={false}
       errors={[]}
       header="Add product"
@@ -26,7 +26,7 @@ storiesOf("Views / Products / Create product", module)
   ))
   .add("When loading", () => (
     <ProductCreatePage
-      currency="USD"
+      currency="RUB"
       disabled={true}
       errors={[]}
       header="Add product"

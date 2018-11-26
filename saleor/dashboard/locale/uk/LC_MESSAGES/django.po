@@ -353,7 +353,7 @@ msgstr ""
 
 #: saleor/dashboard/discount/filters.py:31
 msgctxt "Sale type filter choice"
-msgid "USD"
+msgid "RUB"
 msgstr "дол."
 
 #: saleor/dashboard/discount/filters.py:32

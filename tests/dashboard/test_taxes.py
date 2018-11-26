@@ -127,17 +127,17 @@ def test_apply_tax_to_price_do_not_include_tax(site_settings, taxes):
     site_settings.include_taxes_in_prices = False
     site_settings.save()
 
-    money = Money(100, 'USD')
+    money = Money(100, 'RUB')
     assert apply_tax_to_price(taxes, 'standard', money) == TaxedMoney(
-        net=Money(100, 'USD'), gross=Money(123, 'USD'))
+        net=Money(100, 'RUB'), gross=Money(123, 'RUB'))
     assert apply_tax_to_price(taxes, 'medical', money) == TaxedMoney(
-        net=Money(100, 'USD'), gross=Money(108, 'USD'))
+        net=Money(100, 'RUB'), gross=Money(108, 'RUB'))
 
-    taxed_money = TaxedMoney(net=Money(100, 'USD'), gross=Money(100, 'USD'))
+    taxed_money = TaxedMoney(net=Money(100, 'RUB'), gross=Money(100, 'RUB'))
     assert apply_tax_to_price(taxes, 'standard', taxed_money) == TaxedMoney(
-        net=Money(100, 'USD'), gross=Money(123, 'USD'))
+        net=Money(100, 'RUB'), gross=Money(123, 'RUB'))
     assert apply_tax_to_price(taxes, 'medical', taxed_money) == TaxedMoney(
-        net=Money(100, 'USD'), gross=Money(108, 'USD'))
+        net=Money(100, 'RUB'), gross=Money(108, 'RUB'))
 
 
 def test_apply_tax_to_price_do_not_include_tax_fallback_to_standard_rate(
@@ -145,27 +145,27 @@ def test_apply_tax_to_price_do_not_include_tax_fallback_to_standard_rate(
     site_settings.include_taxes_in_prices = False
     site_settings.save()
 
-    money = Money(100, 'USD')
-    taxed_money = TaxedMoney(net=Money(100, 'USD'), gross=Money(123, 'USD'))
+    money = Money(100, 'RUB')
+    taxed_money = TaxedMoney(net=Money(100, 'RUB'), gross=Money(123, 'RUB'))
     assert apply_tax_to_price(taxes, 'space suits', money) == taxed_money
 
 
 def test_apply_tax_to_price_include_tax(taxes):
-    money = Money(100, 'USD')
+    money = Money(100, 'RUB')
     assert apply_tax_to_price(taxes, 'standard', money) == TaxedMoney(
-        net=Money('81.30', 'USD'), gross=Money(100, 'USD'))
+        net=Money('81.30', 'RUB'), gross=Money(100, 'RUB'))
     assert apply_tax_to_price(taxes, 'medical', money) == TaxedMoney(
-        net=Money('92.59', 'USD'), gross=Money(100, 'USD'))
+        net=Money('92.59', 'RUB'), gross=Money(100, 'RUB'))
 
 
 def test_apply_tax_to_price_include_fallback_to_standard_rate(taxes):
-    money = Money(100, 'USD')
+    money = Money(100, 'RUB')
     assert apply_tax_to_price(taxes, 'space suits', money) == TaxedMoney(
-        net=Money('81.30', 'USD'), gross=Money(100, 'USD'))
+        net=Money('81.30', 'RUB'), gross=Money(100, 'RUB'))
 
-    taxed_money = TaxedMoney(net=Money(100, 'USD'), gross=Money(100, 'USD'))
+    taxed_money = TaxedMoney(net=Money(100, 'RUB'), gross=Money(100, 'RUB'))
     assert apply_tax_to_price(taxes, 'space suits', taxed_money) == TaxedMoney(
-        net=Money('81.30', 'USD'), gross=Money(100, 'USD'))
+        net=Money('81.30', 'RUB'), gross=Money(100, 'RUB'))
 
 
 def test_apply_tax_to_price_raise_typeerror_for_invalid_type(taxes):
@@ -174,18 +174,18 @@ def test_apply_tax_to_price_raise_typeerror_for_invalid_type(taxes):
 
 
 def test_apply_tax_to_price_no_taxes_return_taxed_money():
-    money = Money(100, 'USD')
-    taxed_money = TaxedMoney(net=Money(100, 'USD'), gross=Money(100, 'USD'))
+    money = Money(100, 'RUB')
+    taxed_money = TaxedMoney(net=Money(100, 'RUB'), gross=Money(100, 'RUB'))
 
     assert apply_tax_to_price(None, 'standard', money) == taxed_money
     assert apply_tax_to_price(None, 'medical', taxed_money) == taxed_money
 
 
 def test_apply_tax_to_price_no_taxes_return_taxed_money_range():
-    money_range = MoneyRange(Money(100, 'USD'), Money(200, 'USD'))
+    money_range = MoneyRange(Money(100, 'RUB'), Money(200, 'RUB'))
     taxed_money_range = TaxedMoneyRange(
-        TaxedMoney(net=Money(100, 'USD'), gross=Money(100, 'USD')),
-        TaxedMoney(net=Money(200, 'USD'), gross=Money(200, 'USD')))
+        TaxedMoney(net=Money(100, 'RUB'), gross=Money(100, 'RUB')),
+        TaxedMoney(net=Money(200, 'RUB'), gross=Money(200, 'RUB')))
 
     assert (apply_tax_to_price(
         None, 'standard', money_range) == taxed_money_range)

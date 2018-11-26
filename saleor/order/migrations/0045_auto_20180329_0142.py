@@ -33,11 +33,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='orderline',
             name='unit_price_gross',
-            field=django_prices.models.MoneyField(currency='USD', decimal_places=2, max_digits=12),
+            field=django_prices.models.MoneyField(currency='RUB', decimal_places=2, max_digits=12),
         ),
         migrations.AlterField(
             model_name='orderline',
             name='unit_price_net',
-            field=django_prices.models.MoneyField(currency='USD', decimal_places=2, max_digits=12),
+            field=django_prices.models.MoneyField(currency='RUB', decimal_places=2, max_digits=12),
         ),
     ]

@@ -19,11 +19,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='order',
             name='shipping_price_gross',
-            field=django_prices.models.MoneyField(currency='USD', decimal_places=2, default=0, editable=False, max_digits=12),
+            field=django_prices.models.MoneyField(currency='RUB', decimal_places=2, default=0, editable=False, max_digits=12),
         ),
         migrations.AddField(
             model_name='order',
             name='shipping_price_net',
-            field=django_prices.models.MoneyField(currency='USD', decimal_places=2, default=0, editable=False, max_digits=12),
+            field=django_prices.models.MoneyField(currency='RUB', decimal_places=2, default=0, editable=False, max_digits=12),
         ),
     ]

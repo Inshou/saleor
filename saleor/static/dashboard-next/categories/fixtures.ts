@@ -95,7 +95,7 @@ export const category: (
           price: {
             __typename: "Money",
             amount: 83.3,
-            currency: "USD"
+            currency: "RUB"
           },
           productType: {
             __typename: "ProductType",
@@ -119,7 +119,7 @@ export const category: (
           price: {
             __typename: "Money",
             amount: 68.27,
-            currency: "USD"
+            currency: "RUB"
           },
           productType: {
             __typename: "ProductType",
@@ -143,7 +143,7 @@ export const category: (
           price: {
             __typename: "Money",
             amount: 21.43,
-            currency: "USD"
+            currency: "RUB"
           },
           productType: {
             __typename: "ProductType",
@@ -167,7 +167,7 @@ export const category: (
           price: {
             __typename: "Money",
             amount: 62.76,
-            currency: "USD"
+            currency: "RUB"
           },
           productType: {
             __typename: "ProductType",
@@ -191,7 +191,7 @@ export const category: (
           price: {
             __typename: "Money",
             amount: 7.13,
-            currency: "USD"
+            currency: "RUB"
           },
           productType: {
             __typename: "ProductType",
@@ -215,7 +215,7 @@ export const category: (
           price: {
             __typename: "Money",
             amount: 48.82,
-            currency: "USD"
+            currency: "RUB"
           },
           productType: {
             __typename: "ProductType",
@@ -239,7 +239,7 @@ export const category: (
           price: {
             __typename: "Money",
             amount: 27.34,
-            currency: "USD"
+            currency: "RUB"
           },
           productType: {
             __typename: "ProductType",
@@ -263,7 +263,7 @@ export const category: (
           price: {
             __typename: "Money",
             amount: 75.42,
-            currency: "USD"
+            currency: "RUB"
           },
           productType: {
             __typename: "ProductType",
@@ -287,7 +287,7 @@ export const category: (
           price: {
             __typename: "Money",
             amount: 86.62,
-            currency: "USD"
+            currency: "RUB"
           },
           productType: {
             __typename: "ProductType",
@@ -311,7 +311,7 @@ export const category: (
           price: {
             __typename: "Money",
             amount: 48.66,
-            currency: "USD"
+            currency: "RUB"
           },
           productType: {
             __typename: "ProductType",

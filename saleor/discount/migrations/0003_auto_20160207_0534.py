@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='sale',
             name='type',
-            field=models.CharField(choices=[('fixed', 'USD'), ('percentage', '%')], default='fixed', max_length=10),
+            field=models.CharField(choices=[('fixed', 'RUB'), ('percentage', '%')], default='fixed', max_length=10),
         ),
         migrations.AlterField(
             model_name='voucher',
@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='voucher',
             name='discount_value_type',
-            field=models.CharField(choices=[('fixed', 'USD'), ('percentage', '%')], default='fixed', max_length=10, verbose_name='discount type'),
+            field=models.CharField(choices=[('fixed', 'RUB'), ('percentage', '%')], default='fixed', max_length=10, verbose_name='discount type'),
         ),
         migrations.AlterField(
             model_name='voucher',

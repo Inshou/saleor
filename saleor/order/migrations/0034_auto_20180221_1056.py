@@ -14,16 +14,16 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='order',
             name='total_gross',
-            field=django_prices.models.MoneyField(blank=True, currency='USD', decimal_places=2, max_digits=12, null=True),
+            field=django_prices.models.MoneyField(blank=True, currency='RUB', decimal_places=2, max_digits=12, null=True),
         ),
         migrations.AlterField(
             model_name='orderline',
             name='unit_price_gross',
-            field=django_prices.models.MoneyField(currency='USD', decimal_places=4, max_digits=12),
+            field=django_prices.models.MoneyField(currency='RUB', decimal_places=4, max_digits=12),
         ),
         migrations.AlterField(
             model_name='orderline',
             name='unit_price_net',
-            field=django_prices.models.MoneyField(currency='USD', decimal_places=4, max_digits=12),
+            field=django_prices.models.MoneyField(currency='RUB', decimal_places=4, max_digits=12),
         ),
     ]

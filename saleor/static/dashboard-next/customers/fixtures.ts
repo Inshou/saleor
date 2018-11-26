@@ -970,7 +970,7 @@ export const customer: CustomerDetails_user = {
             gross: {
               __typename: "Money",
               amount: 1215.89,
-              currency: "USD"
+              currency: "RUB"
             }
           }
         }

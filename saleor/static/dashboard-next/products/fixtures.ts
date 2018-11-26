@@ -99,12 +99,12 @@ export const product: (
         gross: {
           __typename: "Money",
           amount: 12.3,
-          currency: "USD"
+          currency: "RUB"
         },
         net: {
           __typename: "Money",
           amount: 10,
-          currency: "USD"
+          currency: "RUB"
         }
       },
       stop: {
@@ -112,12 +112,12 @@ export const product: (
         gross: {
           __typename: "Money",
           amount: 24.6,
-          currency: "USD"
+          currency: "RUB"
         },
         net: {
           __typename: "Money",
           amount: 20,
-          currency: "USD"
+          currency: "RUB"
         }
       }
     }
@@ -256,7 +256,7 @@ export const product: (
       priceOverride: {
         __typename: "Money",
         amount: 678.78,
-        currency: "USD"
+        currency: "RUB"
       },
       sku: "87192-94370",
       stockQuantity: 48
@@ -2252,7 +2252,7 @@ export const variant = (placeholderImage: string): ProductVariant => ({
   costPrice: {
     __typename: "Money",
     amount: 12,
-    currency: "USD"
+    currency: "RUB"
   },
   id: "var1",
   images: [
@@ -2281,7 +2281,7 @@ export const variant = (placeholderImage: string): ProductVariant => ({
   priceOverride: {
     __typename: "Money",
     amount: 100,
-    currency: "USD"
+    currency: "RUB"
   },
   product: {
     __typename: "Product",

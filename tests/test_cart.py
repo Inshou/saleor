@@ -248,7 +248,7 @@ def test_adding_same_variant(cart, product, taxes):
     add_variant_to_cart(cart, variant, 2)
     assert len(cart) == 1
     assert cart.quantity == 3
-    cart_total = TaxedMoney(net=Money('24.39', 'USD'), gross=Money(30, 'USD'))
+    cart_total = TaxedMoney(net=Money('24.39', 'RUB'), gross=Money(30, 'RUB'))
     assert cart.get_subtotal(taxes=taxes) == cart_total
 
 
@@ -538,7 +538,7 @@ def test_cart_line_total_with_discount_and_taxes(
     sales = Sale.objects.all()
     line = request_cart_with_item.lines.first()
     assert line.get_total(discounts=sales, taxes=taxes) == TaxedMoney(
-        net=Money('4.07', 'USD'), gross=Money('5.00', 'USD'))
+        net=Money('4.07', 'RUB'), gross=Money('5.00', 'RUB'))
 
 
 def test_find_open_cart_for_user(customer_user, user_cart):
@@ -632,11 +632,11 @@ def test_get_cart_data(request_cart_with_item, shipping_zone, vatlayer):
     shipment_option = get_shipping_price_estimate(
         cart.get_subtotal().gross, cart.get_total_weight(), 'PL', vatlayer)
     cart_data = utils.get_cart_data(
-        cart, shipment_option, 'USD', None, vatlayer)
+        cart, shipment_option, 'RUB', None, vatlayer)
     assert cart_data['cart_total'] == TaxedMoney(
-        net=Money('8.13', 'USD'), gross=Money(10, 'USD'))
+        net=Money('8.13', 'RUB'), gross=Money(10, 'RUB'))
     assert cart_data['total_with_shipping'].start == TaxedMoney(
-        net=Money('16.26', 'USD'), gross=Money(20, 'USD'))
+        net=Money('16.26', 'RUB'), gross=Money(20, 'RUB'))
 
 
 def test_get_cart_data_no_shipping(request_cart_with_item, vatlayer):
@@ -644,10 +644,10 @@ def test_get_cart_data_no_shipping(request_cart_with_item, vatlayer):
     shipment_option = get_shipping_price_estimate(
         cart.get_subtotal().gross, cart.get_total_weight(), 'PL', vatlayer)
     cart_data = utils.get_cart_data(
-        cart, shipment_option, 'USD', None, vatlayer)
+        cart, shipment_option, 'RUB', None, vatlayer)
     cart_total = cart_data['cart_total']
     assert cart_total == TaxedMoney(
-        net=Money('8.13', 'USD'), gross=Money(10, 'USD'))
+        net=Money('8.13', 'RUB'), gross=Money(10, 'RUB'))
     assert cart_data['total_with_shipping'].start == cart_total
 
 
@@ -655,14 +655,14 @@ def test_cart_total_with_discount(request_cart_with_item, sale, vatlayer):
     total = (
         request_cart_with_item.get_total(discounts=(sale,), taxes=vatlayer))
     assert total == TaxedMoney(
-        net=Money('4.07', 'USD'), gross=Money('5.00', 'USD'))
+        net=Money('4.07', 'RUB'), gross=Money('5.00', 'RUB'))
 
 
 def test_cart_taxes(request_cart_with_item, shipping_zone, vatlayer):
     cart = request_cart_with_item
     cart.shipping_method = shipping_zone.shipping_methods.get()
     cart.save()
-    taxed_price = TaxedMoney(net=Money('8.13', 'USD'), gross=Money(10, 'USD'))
+    taxed_price = TaxedMoney(net=Money('8.13', 'RUB'), gross=Money(10, 'RUB'))
     assert cart.get_shipping_price(taxes=vatlayer) == taxed_price
     assert cart.get_subtotal(taxes=vatlayer) == taxed_price
 

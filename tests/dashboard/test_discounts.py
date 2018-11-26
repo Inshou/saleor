@@ -46,7 +46,7 @@ def test_voucher_shipping_add(admin_client):
     assert voucher.end_date == date(2018, 6, 1)
     assert voucher.discount_value_type == DiscountValueType.FIXED
     assert voucher.discount_value == Decimal('15.99')
-    assert voucher.min_amount_spent == Money('59.99', 'USD')
+    assert voucher.min_amount_spent == Money('59.99', 'RUB')
 
 
 def test_view_sale_add(admin_client, category, collection):
@@ -103,11 +103,11 @@ def test_value_voucher_order_discount(
         code='unique', type=VoucherType.VALUE,
         discount_value_type=discount_type,
         discount_value=discount_value,
-        min_amount_spent=Money(min_amount_spent, 'USD') if min_amount_spent is not None else None)
-    subtotal = TaxedMoney(net=Money(total, 'USD'), gross=Money(total, 'USD'))
+        min_amount_spent=Money(min_amount_spent, 'RUB') if min_amount_spent is not None else None)
+    subtotal = TaxedMoney(net=Money(total, 'RUB'), gross=Money(total, 'RUB'))
     order = Mock(get_subtotal=Mock(return_value=subtotal), voucher=voucher)
     discount = get_voucher_discount_for_order(order)
-    assert discount == Money(expected_value, 'USD')
+    assert discount == Money(expected_value, 'RUB')
 
 
 @pytest.mark.parametrize(
@@ -121,15 +121,15 @@ def test_shipping_voucher_order_discount(
         discount_value_type=discount_type,
         discount_value=discount_value,
         min_amount_spent=None)
-    subtotal = TaxedMoney(net=Money(100, 'USD'), gross=Money(100, 'USD'))
+    subtotal = TaxedMoney(net=Money(100, 'RUB'), gross=Money(100, 'RUB'))
     shipping_total = TaxedMoney(
-        net=Money(shipping_cost, 'USD'), gross=Money(shipping_cost, 'USD'))
+        net=Money(shipping_cost, 'RUB'), gross=Money(shipping_cost, 'RUB'))
     order = Mock(
         get_subtotal=Mock(return_value=subtotal),
         shipping_price=shipping_total,
         voucher=voucher)
     discount = get_voucher_discount_for_order(order)
-    assert discount == Money(expected_value, 'USD')
+    assert discount == Money(expected_value, 'RUB')
 
 
 def test_shipping_voucher_checkout_discount_not_applicable_returns_zero():
@@ -137,8 +137,8 @@ def test_shipping_voucher_checkout_discount_not_applicable_returns_zero():
         code='unique', type=VoucherType.SHIPPING,
         discount_value_type=DiscountValueType.FIXED,
         discount_value=10,
-        min_amount_spent=Money(20, 'USD'))
-    price = TaxedMoney(net=Money(10, 'USD'), gross=Money(10, 'USD'))
+        min_amount_spent=Money(20, 'RUB'))
+    price = TaxedMoney(net=Money(10, 'RUB'), gross=Money(10, 'RUB'))
     order = Mock(
         get_subtotal=Mock(return_value=price),
         shipping_price=price,

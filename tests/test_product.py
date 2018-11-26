@@ -473,7 +473,7 @@ def test_get_price(
     product = models.Product.objects.create(
         product_type=product_type,
         category=category,
-        price=Money(product_price, 'USD'))
+        price=Money(product_price, 'RUB'))
     variant = product.variants.create()
 
     price = variant.get_price(
@@ -481,7 +481,7 @@ def test_get_price(
         discounts=Sale.objects.all() if include_discounts else None)
 
     assert price == TaxedMoney(
-        net=Money(product_net, 'USD'), gross=Money(product_gross, 'USD'))
+        net=Money(product_net, 'RUB'), gross=Money(product_gross, 'RUB'))
 
 
 def test_product_get_price_variant_has_no_price(
@@ -491,13 +491,13 @@ def test_product_get_price_variant_has_no_price(
     product = models.Product.objects.create(
         product_type=product_type,
         category=category,
-        price=Money('10.00', 'USD'))
+        price=Money('10.00', 'RUB'))
     variant = product.variants.create()
 
     price = variant.get_price(taxes=taxes)
 
     assert price == TaxedMoney(
-        net=Money('10.00', 'USD'), gross=Money('12.30', 'USD'))
+        net=Money('10.00', 'RUB'), gross=Money('12.30', 'RUB'))
 
 
 def test_product_get_price_variant_with_price(
@@ -507,13 +507,13 @@ def test_product_get_price_variant_with_price(
     product = models.Product.objects.create(
         product_type=product_type,
         category=category,
-        price=Money('10.00', 'USD'))
-    variant = product.variants.create(price_override=Money('20.00', 'USD'))
+        price=Money('10.00', 'RUB'))
+    variant = product.variants.create(price_override=Money('20.00', 'RUB'))
 
     price = variant.get_price(taxes=taxes)
 
     assert price == TaxedMoney(
-        net=Money('20.00', 'USD'), gross=Money('24.60', 'USD'))
+        net=Money('20.00', 'RUB'), gross=Money('24.60', 'RUB'))
 
 
 def test_product_get_price_range_with_variants(
@@ -523,17 +523,17 @@ def test_product_get_price_range_with_variants(
     product = models.Product.objects.create(
         product_type=product_type,
         category=category,
-        price=Money('15.00', 'USD'))
+        price=Money('15.00', 'RUB'))
     product.variants.create(sku='1')
-    product.variants.create(sku='2', price_override=Money('20.00', 'USD'))
-    product.variants.create(sku='3', price_override=Money('11.00', 'USD'))
+    product.variants.create(sku='2', price_override=Money('20.00', 'RUB'))
+    product.variants.create(sku='3', price_override=Money('11.00', 'RUB'))
 
     price = product.get_price_range(taxes=taxes)
 
     start = TaxedMoney(
-        net=Money('11.00', 'USD'), gross=Money('13.53', 'USD'))
+        net=Money('11.00', 'RUB'), gross=Money('13.53', 'RUB'))
     stop = TaxedMoney(
-        net=Money('20.00', 'USD'), gross=Money('24.60', 'USD'))
+        net=Money('20.00', 'RUB'), gross=Money('24.60', 'RUB'))
     assert price == TaxedMoneyRange(start=start, stop=stop)
 
 
@@ -544,12 +544,12 @@ def test_product_get_price_range_no_variants(
     product = models.Product.objects.create(
         product_type=product_type,
         category=category,
-        price=Money('10.00', 'USD'))
+        price=Money('10.00', 'RUB'))
 
     price = product.get_price_range(taxes=taxes)
 
     expected_price = TaxedMoney(
-        net=Money('10.00', 'USD'), gross=Money('12.30', 'USD'))
+        net=Money('10.00', 'RUB'), gross=Money('12.30', 'RUB'))
     assert price == TaxedMoneyRange(start=expected_price, stop=expected_price)
 
 
@@ -558,14 +558,14 @@ def test_product_get_price_do_not_charge_taxes(
     product = models.Product.objects.create(
         product_type=product_type,
         category=category,
-        price=Money('10.00', 'USD'),
+        price=Money('10.00', 'RUB'),
         charge_taxes=False)
     variant = product.variants.create()
 
     price = variant.get_price(taxes=taxes, discounts=Sale.objects.all())
 
     assert price == TaxedMoney(
-        net=Money('5.00', 'USD'), gross=Money('5.00', 'USD'))
+        net=Money('5.00', 'RUB'), gross=Money('5.00', 'RUB'))
 
 
 def test_product_get_price_range_do_not_charge_taxes(
@@ -573,13 +573,13 @@ def test_product_get_price_range_do_not_charge_taxes(
     product = models.Product.objects.create(
         product_type=product_type,
         category=category,
-        price=Money('10.00', 'USD'),
+        price=Money('10.00', 'RUB'),
         charge_taxes=False)
 
     price = product.get_price_range(taxes=taxes, discounts=Sale.objects.all())
 
     expected_price = TaxedMoney(
-        net=Money('5.00', 'USD'), gross=Money('5.00', 'USD'))
+        net=Money('5.00', 'RUB'), gross=Money('5.00', 'RUB'))
     assert price == TaxedMoneyRange(start=expected_price, stop=expected_price)
 
 
@@ -587,19 +587,19 @@ def test_variant_base_price(product):
     variant = product.variants.get()
     assert variant.base_price == product.price
 
-    variant.price_override = Money('15.00', 'USD')
+    variant.price_override = Money('15.00', 'RUB')
     variant.save()
 
     assert variant.base_price == variant.price_override
 
 
 def test_product_json_serialization(product):
-    product.price = Money('10.00', 'USD')
+    product.price = Money('10.00', 'RUB')
     product.save()
     data = json.loads(serializers.serialize(
         "json", models.Product.objects.all()))
     assert data[0]['fields']['price'] == {
-        '_type': 'Money', 'amount': '10.00', 'currency': 'USD'}
+        '_type': 'Money', 'amount': '10.00', 'currency': 'RUB'}
 
 
 def test_product_json_deserialization(category, product_type):
@@ -614,7 +614,7 @@ def test_product_json_deserialization(category, product_type):
             "name": "Kelly-Clark",
             "description": "Future almost cup national",
             "category": {category_pk},
-            "price": {{"_type": "Money", "amount": "35.98", "currency": "USD"}},
+            "price": {{"_type": "Money", "amount": "35.98", "currency": "RUB"}},
             "available_on": null,
             "is_published": true,
             "attributes": "{{\\"9\\": \\"24\\", \\"10\\": \\"26\\"}}",
@@ -630,7 +630,7 @@ def test_product_json_deserialization(category, product_type):
         'json', product_json, ignorenonexistent=True))[0]
     product_deserialized.save()
     product = models.Product.objects.first()
-    assert product.price == Money(Decimal('35.98'), 'USD')
+    assert product.price == Money(Decimal('35.98'), 'RUB')
 
     # same test for bytes
     product_json_bytes = bytes(product_json, 'utf-8')
@@ -638,7 +638,7 @@ def test_product_json_deserialization(category, product_type):
         'json', product_json_bytes, ignorenonexistent=True))[0]
     product_deserialized.save()
     product = models.Product.objects.first()
-    assert product.price == Money(Decimal('35.98'), 'USD')
+    assert product.price == Money(Decimal('35.98'), 'RUB')
 
     # same test for stream
     product_json_stream = io.StringIO(product_json)
@@ -646,7 +646,7 @@ def test_product_json_deserialization(category, product_type):
         'json', product_json_stream, ignorenonexistent=True))[0]
     product_deserialized.save()
     product = models.Product.objects.first()
-    assert product.price == Money(Decimal('35.98'), 'USD')
+    assert product.price == Money(Decimal('35.98'), 'RUB')
 
 
 def test_json_no_currency_deserialization(category, product_type):

@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='productvariant',
             name='cost_price',
-            field=django_prices.models.MoneyField(blank=True, currency='USD', decimal_places=2, max_digits=12, null=True),
+            field=django_prices.models.MoneyField(blank=True, currency='RUB', decimal_places=2, max_digits=12, null=True),
         ),
         migrations.AddField(
             model_name='productvariant',

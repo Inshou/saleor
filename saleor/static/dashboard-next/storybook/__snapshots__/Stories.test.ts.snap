@@ -2406,7 +2406,7 @@ exports[`Storyshots Generics / PriceRangeField disabled 1`] = `
           <p
             class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
           >
-            USD
+            RUB
           </p>
         </div>
       </div>
@@ -2436,7 +2436,7 @@ exports[`Storyshots Generics / PriceRangeField disabled 1`] = `
           <p
             class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
           >
-            USD
+            RUB
           </p>
         </div>
       </div>
@@ -2471,7 +2471,7 @@ exports[`Storyshots Generics / PriceRangeField with hint 1`] = `
           <p
             class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
           >
-            USD
+            RUB
           </p>
         </div>
       </div>
@@ -2505,7 +2505,7 @@ exports[`Storyshots Generics / PriceRangeField with hint 1`] = `
           <p
             class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
           >
-            USD
+            RUB
           </p>
         </div>
       </div>
@@ -2547,7 +2547,7 @@ exports[`Storyshots Generics / PriceRangeField with label 1`] = `
           <p
             class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
           >
-            USD
+            RUB
           </p>
         </div>
       </div>
@@ -2576,7 +2576,7 @@ exports[`Storyshots Generics / PriceRangeField with label 1`] = `
           <p
             class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
           >
-            USD
+            RUB
           </p>
         </div>
       </div>
@@ -2618,7 +2618,7 @@ exports[`Storyshots Generics / PriceRangeField with label and hint 1`] = `
           <p
             class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
           >
-            USD
+            RUB
           </p>
         </div>
       </div>
@@ -2652,7 +2652,7 @@ exports[`Storyshots Generics / PriceRangeField with label and hint 1`] = `
           <p
             class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
           >
-            USD
+            RUB
           </p>
         </div>
       </div>
@@ -2687,7 +2687,7 @@ exports[`Storyshots Generics / PriceRangeField with value 1`] = `
           <p
             class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
           >
-            USD
+            RUB
           </p>
         </div>
       </div>
@@ -2716,7 +2716,7 @@ exports[`Storyshots Generics / PriceRangeField with value 1`] = `
           <p
             class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
           >
-            USD
+            RUB
           </p>
         </div>
       </div>
@@ -2758,7 +2758,7 @@ exports[`Storyshots Generics / PriceRangeField with value, label, currency symbo
           <p
             class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
           >
-            USD
+            RUB
           </p>
         </div>
       </div>
@@ -2792,7 +2792,7 @@ exports[`Storyshots Generics / PriceRangeField with value, label, currency symbo
           <p
             class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
           >
-            USD
+            RUB
           </p>
         </div>
       </div>
@@ -2834,7 +2834,7 @@ exports[`Storyshots Generics / PriceRangeField with value, label, currency symbo
           <p
             class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
           >
-            USD
+            RUB
           </p>
         </div>
       </div>
@@ -2868,7 +2868,7 @@ exports[`Storyshots Generics / PriceRangeField with value, label, currency symbo
           <p
             class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
           >
-            USD
+            RUB
           </p>
         </div>
       </div>
@@ -39123,7 +39123,7 @@ exports[`Storyshots Views / Products / Create product When loading 1`] = `
                         <p
                           class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
                         >
-                          USD
+                          RUB
                         </p>
                       </div>
                     </div>
@@ -39750,7 +39750,7 @@ exports[`Storyshots Views / Products / Create product default 1`] = `
                         <p
                           class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
                         >
-                          USD
+                          RUB
                         </p>
                       </div>
                     </div>
@@ -40387,7 +40387,7 @@ exports[`Storyshots Views / Products / Create product variant default 1`] = `
                         <p
                           class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
                         >
-                          USD
+                          RUB
                         </p>
                       </div>
                     </div>
@@ -40425,7 +40425,7 @@ exports[`Storyshots Views / Products / Create product variant default 1`] = `
                         <p
                           class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
                         >
-                          USD
+                          RUB
                         </p>
                       </div>
                     </div>
@@ -40754,7 +40754,7 @@ exports[`Storyshots Views / Products / Create product variant when loading data 
                         <p
                           class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
                         >
-                          USD
+                          RUB
                         </p>
                       </div>
                     </div>
@@ -40793,7 +40793,7 @@ exports[`Storyshots Views / Products / Create product variant when loading data 
                         <p
                           class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
                         >
-                          USD
+                          RUB
                         </p>
                       </div>
                     </div>
@@ -41173,7 +41173,7 @@ exports[`Storyshots Views / Products / Create product variant with errors 1`] = 
                         <p
                           class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
                         >
-                          USD
+                          RUB
                         </p>
                       </div>
                     </div>
@@ -41211,7 +41211,7 @@ exports[`Storyshots Views / Products / Create product variant with errors 1`] = 
                         <p
                           class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
                         >
-                          USD
+                          RUB
                         </p>
                       </div>
                     </div>
@@ -47969,7 +47969,7 @@ exports[`Storyshots Views / Products / Product variant details when loaded data 
                         <p
                           class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
                         >
-                          USD
+                          RUB
                         </p>
                       </div>
                     </div>
@@ -48007,7 +48007,7 @@ exports[`Storyshots Views / Products / Product variant details when loaded data 
                         <p
                           class="MuiTypography-root-id MuiTypography-body1-id MuiTypography-colorTextSecondary-id"
                         >
-                          USD
+                          RUB
                         </p>
                       </div>
                     </div>
@@ -51781,7 +51781,7 @@ exports[`Storyshots Views / Vouchers / Voucher details default 1`] = `
                           role="button"
                           tabindex="0"
                         >
-                          USD
+                          RUB
                         </div>
                         <input
                           name="discountValueType"
@@ -53344,7 +53344,7 @@ exports[`Storyshots Views / Vouchers / Voucher list default 1`] = `
               <span
                 class="Component-link-id"
               >
-                52 USD discount for Handmade Metal Computer
+                52 RUB discount for Handmade Metal Computer
               </span>
             </td>
             <td
@@ -53387,7 +53387,7 @@ exports[`Storyshots Views / Vouchers / Voucher list default 1`] = `
               <span
                 class="Component-link-id"
               >
-                17 USD discount for shipping
+                17 RUB discount for shipping
               </span>
             </td>
             <td

@@ -22,14 +22,14 @@ from tests.utils import get_redirect_location
 
 
 def test_total_setter():
-    price = TaxedMoney(net=Money(10, 'USD'), gross=Money(15, 'USD'))
+    price = TaxedMoney(net=Money(10, 'RUB'), gross=Money(15, 'RUB'))
     order = models.Order()
     order.total = price
-    assert order.total_net == Money(10, 'USD')
-    assert order.total.net == Money(10, 'USD')
-    assert order.total_gross == Money(15, 'USD')
-    assert order.total.gross == Money(15, 'USD')
-    assert order.total.tax == Money(5, 'USD')
+    assert order.total_net == Money(10, 'RUB')
+    assert order.total.net == Money(10, 'RUB')
+    assert order.total_gross == Money(15, 'RUB')
+    assert order.total.gross == Money(15, 'RUB')
+    assert order.total.tax == Money(5, 'RUB')
 
 
 def test_order_get_subtotal(order_with_lines):
@@ -77,7 +77,7 @@ def test_add_variant_to_order_adds_line_for_new_variant(
     assert line.product_sku == variant.sku
     assert line.quantity == 1
     assert line.unit_price == TaxedMoney(
-        net=Money('8.13', 'USD'), gross=Money(10, 'USD'))
+        net=Money('8.13', 'RUB'), gross=Money(10, 'RUB'))
     assert line.tax_rate == taxes[product.tax_rate]['value']
     assert line.translated_product_name == variant.display_product(
         translated=True)
@@ -360,7 +360,7 @@ def test_order_queryset_drafts(draft_order):
 
 
 def test_order_queryset_to_ship(settings):
-    total = TaxedMoney(net=Money(10, 'USD'), gross=Money(15, 'USD'))
+    total = TaxedMoney(net=Money(10, 'RUB'), gross=Money(15, 'RUB'))
     orders_to_ship = [
         Order.objects.create(status=OrderStatus.UNFULFILLED, total=total),
         Order.objects.create(
@@ -389,7 +389,7 @@ def test_order_queryset_to_ship(settings):
 
 
 def test_queryset_ready_to_capture():
-    total = TaxedMoney(net=Money(10, 'USD'), gross=Money(15, 'USD'))
+    total = TaxedMoney(net=Money(10, 'RUB'), gross=Money(15, 'RUB'))
 
     preauth_order = Order.objects.create(
         status=OrderStatus.UNFULFILLED, total=total)

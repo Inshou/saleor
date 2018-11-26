@@ -10,7 +10,7 @@ storiesOf("Views / Vouchers / Voucher list", module)
   .addDecorator(Decorator)
   .add("default", () => (
     <VoucherListPage
-      currency="USD"
+      currency="RUB"
       vouchers={vouchers}
       {...pageListProps.default}
     />

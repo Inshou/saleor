@@ -116,9 +116,9 @@ def test_view_product_list_pagination_with_filters(
 
 
 def test_view_product_details(admin_client, product):
-    price = TaxedMoney(net=Money(10, 'USD'), gross=Money(10, 'USD'))
+    price = TaxedMoney(net=Money(10, 'RUB'), gross=Money(10, 'RUB'))
     sale_price = TaxedMoneyRange(start=price, stop=price)
-    purchase_cost = MoneyRange(start=Money(1, 'USD'), stop=Money(1, 'USD'))
+    purchase_cost = MoneyRange(start=Money(1, 'RUB'), stop=Money(1, 'RUB'))
     url = reverse('dashboard:product-details', kwargs={'pk': product.pk})
 
     response = admin_client.get(url)

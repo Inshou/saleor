@@ -64,7 +64,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 305.17,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "laura.stone@example.com"
@@ -100,7 +100,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 1215.89,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "elizabeth.vaughn@example.com"
@@ -118,7 +118,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 321.71,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "david.lawson@example.com"
@@ -154,7 +154,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 271.95,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "aaron.randall@example.com"
@@ -190,7 +190,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 335.84,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "laura.jensen@example.com"
@@ -226,7 +226,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 1042.15,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "jenna.villa@example.com"
@@ -262,7 +262,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 213.69,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "wesley.davis@example.com"
@@ -298,7 +298,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 367.03,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "anthony.gonzalez@example.com"
@@ -334,7 +334,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 298.76,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "denise.freeman@example.com"
@@ -370,7 +370,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 663.69,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "james.ball@example.com"
@@ -406,7 +406,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 280.41,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "michael.martinez@example.com"
@@ -442,7 +442,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 234.93,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "melissa.simon@example.com"
@@ -478,7 +478,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 485.19,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "justin.mccoy@example.com"
@@ -514,7 +514,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 223.54,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "anthony.gonzalez@example.com"
@@ -550,7 +550,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 237.55,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "bradley.ford@example.com"
@@ -586,7 +586,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 453.55,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "david.lawson@example.com"
@@ -622,7 +622,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 812.67,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "lauren.watson@example.com"
@@ -658,7 +658,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 481.41,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "mark.lee@example.com"
@@ -694,7 +694,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 569.19,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "kara.murphy@example.com"
@@ -730,7 +730,7 @@ export const orders: OrderList_orders_edges_node[] = [
       gross: {
         __typename: "Money",
         amount: 557,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     userEmail: "curtis.bailey@example.com"
@@ -752,7 +752,7 @@ export const order = (placeholder: string): OrderDetails_order => ({
       price: {
         __typename: "Money",
         amount: 12.41,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     {
@@ -762,7 +762,7 @@ export const order = (placeholder: string): OrderDetails_order => ({
       price: {
         __typename: "Money",
         amount: 9.12,
-        currency: "USD"
+        currency: "RUB"
       }
     },
     {
@@ -772,7 +772,7 @@ export const order = (placeholder: string): OrderDetails_order => ({
       price: {
         __typename: "Money",
         amount: 7.6,
-        currency: "USD"
+        currency: "RUB"
       }
     }
   ],
@@ -835,12 +835,12 @@ export const order = (placeholder: string): OrderDetails_order => ({
               gross: {
                 __typename: "Money",
                 amount: 79.71,
-                currency: "USD"
+                currency: "RUB"
               },
               net: {
                 __typename: "Money",
                 amount: 79.71,
-                currency: "USD"
+                currency: "RUB"
               }
             }
           },
@@ -871,12 +871,12 @@ export const order = (placeholder: string): OrderDetails_order => ({
               gross: {
                 __typename: "Money",
                 amount: 79.71,
-                currency: "USD"
+                currency: "RUB"
               },
               net: {
                 __typename: "Money",
                 amount: 79.71,
-                currency: "USD"
+                currency: "RUB"
               }
             }
           },
@@ -902,12 +902,12 @@ export const order = (placeholder: string): OrderDetails_order => ({
         gross: {
           __typename: "Money",
           amount: 18.51,
-          currency: "USD"
+          currency: "RUB"
         },
         net: {
           __typename: "Money",
           amount: 18.51,
-          currency: "USD"
+          currency: "RUB"
         }
       }
     },
@@ -924,12 +924,12 @@ export const order = (placeholder: string): OrderDetails_order => ({
         gross: {
           __typename: "Money",
           amount: 79.71,
-          currency: "USD"
+          currency: "RUB"
         },
         net: {
           __typename: "Money",
           amount: 79.71,
-          currency: "USD"
+          currency: "RUB"
         }
       }
     }
@@ -962,7 +962,7 @@ export const order = (placeholder: string): OrderDetails_order => ({
     gross: {
       __typename: "Money",
       amount: 19.98,
-      currency: "USD"
+      currency: "RUB"
     }
   },
   status: OrderStatus.PARTIALLY_FULFILLED,
@@ -971,7 +971,7 @@ export const order = (placeholder: string): OrderDetails_order => ({
     gross: {
       __typename: "Money",
       amount: 214.95,
-      currency: "USD"
+      currency: "RUB"
     }
   },
   total: {
@@ -979,23 +979,23 @@ export const order = (placeholder: string): OrderDetails_order => ({
     gross: {
       __typename: "Money",
       amount: 234.93,
-      currency: "USD"
+      currency: "RUB"
     },
     tax: {
       __typename: "Money",
       amount: 0,
-      currency: "USD"
+      currency: "RUB"
     }
   },
   totalAuthorized: {
     __typename: "Money",
     amount: 234.93,
-    currency: "USD"
+    currency: "RUB"
   },
   totalCaptured: {
     __typename: "Money",
     amount: 0,
-    currency: "USD"
+    currency: "RUB"
   },
   user: null,
   userEmail: "melissa.simon@example.com"
@@ -1023,12 +1023,12 @@ export const draftOrder = (placeholder: string) => ({
         gross: {
           __typename: "Money" as "Money",
           amount: 65.95,
-          currency: "USD"
+          currency: "RUB"
         },
         net: {
           __typename: "Money" as "Money",
           amount: 65.95,
-          currency: "USD"
+          currency: "RUB"
         }
       }
     },
@@ -1045,12 +1045,12 @@ export const draftOrder = (placeholder: string) => ({
         gross: {
           __typename: "Money" as "Money",
           amount: 68.2,
-          currency: "USD"
+          currency: "RUB"
         },
         net: {
           __typename: "Money" as "Money",
           amount: 68.2,
-          currency: "USD"
+          currency: "RUB"
         }
       }
     }
@@ -1065,7 +1065,7 @@ export const draftOrder = (placeholder: string) => ({
     gross: {
       __typename: "Money" as "Money",
       amount: 0,
-      currency: "USD"
+      currency: "RUB"
     }
   },
   status: "DRAFT" as OrderStatus.DRAFT,
@@ -1074,7 +1074,7 @@ export const draftOrder = (placeholder: string) => ({
     gross: {
       __typename: "Money" as "Money",
       amount: 168.3,
-      currency: "USD"
+      currency: "RUB"
     }
   },
   total: {
@@ -1082,12 +1082,12 @@ export const draftOrder = (placeholder: string) => ({
     gross: {
       __typename: "Money" as "Money",
       amount: 168.3,
-      currency: "USD"
+      currency: "RUB"
     },
     tax: {
       __typename: "Money" as "Money",
       amount: 68.3,
-      currency: "USD"
+      currency: "RUB"
     }
   },
   totalAuthorized: null,

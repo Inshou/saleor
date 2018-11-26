@@ -13,7 +13,7 @@ storiesOf("Views / Vouchers / Voucher details", module)
   .add("default", () => (
     <VoucherDetailsPage
       onBack={() => undefined}
-      currency="USD"
+      currency="RUB"
       voucher={vouchers[0]}
       onVoucherDelete={undefined}
       shippingSearchResults={countries}

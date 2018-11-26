@@ -11,10 +11,10 @@ from saleor.shipping.models import (
 from .utils import money
 
 @pytest.mark.parametrize('price, charge_taxes, expected_price', [
-    (Money(10, 'USD'), False, TaxedMoney(
-        net=Money(10, 'USD'), gross=Money(10, 'USD'))),
-    (Money(10, 'USD'), True, TaxedMoney(
-        net=Money('8.13', 'USD'), gross=Money(10, 'USD')))])
+    (Money(10, 'RUB'), False, TaxedMoney(
+        net=Money(10, 'RUB'), gross=Money(10, 'RUB'))),
+    (Money(10, 'RUB'), True, TaxedMoney(
+        net=Money('8.13', 'RUB'), gross=Money(10, 'RUB')))])
 def test_get_taxed_shipping_price(
         site_settings, vatlayer, price, charge_taxes, expected_price):
     site_settings.charge_taxes_on_shipping = charge_taxes
@@ -27,9 +27,9 @@ def test_get_taxed_shipping_price(
 
 def test_shipping_get_total(monkeypatch, shipping_zone, vatlayer):
     method = shipping_zone.shipping_methods.get()
-    price = Money(10, 'USD')
+    price = Money(10, 'RUB')
     taxed_price = TaxedMoney(
-        net=Money('8.13', 'USD'), gross=Money(10, 'USD'))
+        net=Money('8.13', 'RUB'), gross=Money(10, 'RUB'))
     mock_get_price = Mock(return_value=taxed_price)
     monkeypatch.setattr(
         'saleor.shipping.models.get_taxed_shipping_price', mock_get_price)

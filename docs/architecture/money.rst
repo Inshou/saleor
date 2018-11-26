@@ -22,7 +22,7 @@ Money and TaxedMoney
 
 In Saleor's codebase, money amounts exist either as `Money` or `TaxedMoney` instances.
 
-`Money` is a type representing amount of money in specific currency: 100 USD is represented by `Money(100, 'USD')`.
+`Money` is a type representing amount of money in specific currency: 100 RUB is represented by `Money(100, 'RUB')`.
 This type doesn't hold any additional information useful for commerce but, unlike `Decimal`, it implements safeguards and checks for calculations and comparisons of monetary values.
 
 Money amounts are stored on model using `MoneyField` that provides its own safechecks on currency and precision of stored amount.
@@ -40,4 +40,4 @@ TaxedMoneyRange
 Sometimes a product may be available under more than single price due to its variants defining custom prices different from the base price.
 
 For such situations `Product` defines additional `get_price_range` method that return `TaxedMoneyRange` object defining minimum and maximum prices on its `start` and `stop` attributes.
-This object is then used by the UI to differentiate between displaying price as "10 USD" or "from 10 USD" in case of products where prices differ between variants.
+This object is then used by the UI to differentiate between displaying price as "10 RUB" or "from 10 RUB" in case of products where prices differ between variants.

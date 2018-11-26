@@ -28,7 +28,7 @@ SORT_BY_FIELDS_LABELS_VOUCHER = {
         'Voucher list sorting option', 'min_amount_spent')}
 
 DISCOUNT_TYPE_CHOICES = (
-    ('fixed', pgettext_lazy('Sale type filter choice', 'USD')),
+    ('fixed', pgettext_lazy('Sale type filter choice', 'RUB')),
     ('percentage', pgettext_lazy('Sale type filter choice', '%')))
 
 

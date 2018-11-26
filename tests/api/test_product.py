@@ -301,12 +301,12 @@ def test_filter_products_by_collections(
 
 def test_sort_products(user_api_client, product):
     # set price of the first product
-    product.price = Money('10.00', 'USD')
+    product.price = Money('10.00', 'RUB')
     product.save()
 
     # create the second product with higher price
     product.pk = None
-    product.price = Money('20.00', 'USD')
+    product.price = Money('20.00', 'RUB')
     product.save()
 
     query = """
@@ -1172,11 +1172,11 @@ def test_product_variant_price(
         user_api_client, variant):
     # Set price override on variant that is different than product price
     product = variant.product
-    product.price = Money(amount=product_price, currency='USD')
+    product.price = Money(amount=product_price, currency='RUB')
     product.save()
     if variant_override is not None:
         product.variants.update(
-            price_override=Money(amount=variant_override, currency='USD'))
+            price_override=Money(amount=variant_override, currency='RUB'))
     else:
         product.variants.update(price_override=None)
     # Drop other variants
